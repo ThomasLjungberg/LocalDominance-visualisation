@@ -38,17 +38,17 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	local_dominance.py local_dominance_dialog.py
+	local_dominance.py local_dominance_dialog.py local_dominance_parallel.py
 
 PLUGINNAME = LocalDominanceVisualisation
 
 PY_FILES = \
 	__init__.py \
-	local_dominance.py local_dominance_dialog.py
+	local_dominance.py local_dominance_dialog.py local_dominance_parallel.py
 
 UI_FILES = local_dominance_dialog_base.ui
 
-EXTRAS = metadata.txt icon.png
+EXTRAS = metadata.txt icon.png argFile.txt
 
 EXTRA_DIRS =
 

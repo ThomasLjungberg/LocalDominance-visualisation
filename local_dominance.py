@@ -139,6 +139,7 @@ class LocalDominance:
         :rtype: QAction
         """
 
+        # Create the dialog (after translation) and keep reference
         icon = QIcon(icon_path)
         action = QAction(icon, text, parent)
         action.triggered.connect(callback)
@@ -190,6 +191,7 @@ class LocalDominance:
         currentInFile = currentLayer.dataProvider().dataSourceUri()
         filename = QFileDialog.getSaveFileName(self.dlg, "Output file ", os.path.dirname(currentInFile), '*.tif')
         self.dlg.outFile.setText(filename)
+
 
 
     def run(self):
