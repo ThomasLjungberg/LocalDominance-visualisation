@@ -1,7 +1,6 @@
-C:/AU/Fregerslev/GIS/Layers/Interpolations/P_bf_kriged_exc.tif
-C:/AU/Fregerslev/GIS/Layers/P_bf_LD_0-1.tif
-0
-1
-1.7
+D:/Projects/LD_develop/DTM_kortfors.tif
+D:/Projects/LD_develop/testLD_new.tif
+5
+15
 25
 3

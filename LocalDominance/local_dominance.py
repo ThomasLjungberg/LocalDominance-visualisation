@@ -29,6 +29,9 @@ import resources
 from local_dominance_dialog import LocalDominanceDialog
 import os.path
 from subprocess import call
+import time
+
+startTime = time.time()
 
 
 class LocalDominance:
@@ -217,26 +220,27 @@ class LocalDominance:
             selectedLayer = self.layers[selectedLayerIndex]
             f_in = selectedLayer.dataProvider().dataSourceUri()
             argList = [f_in, self.dlg.outFile.text(), str(self.dlg.SR_min.value()),
-                       str(self.dlg.SR_max.value()), str(self.dlg.obsHeight.value()),
+                       str(self.dlg.SR_max.value()),
                        str(self.dlg.percentageOfPixels.value()), 
                        str(self.dlg.nCores.value())]
             with open(os.path.join(self.plugin_dir, 'argFile.txt'), 'w') as f_out:
                 for i in argList:
                     f_out.write(i.encode('utf-8') + '\n')
             
-            call(['pythonw.exe', os.path.join(self.plugin_dir, 'LocalDominance_parallel.py')], shell=False)
-            
+            call(['pythonw.exe', os.path.join(self.plugin_dir, 'local_dominance_parallel.py')], shell=False)
+
+
             outRaster = self.dlg.outFile.text()
             layerName = os.path.splitext(os.path.basename(outRaster))
             layer = QgsRasterLayer(outRaster, layerName[0])
             QgsMapLayerRegistry.instance().addMapLayer(layer)
+#			QgsProject.instance().addMapLayer(layer)
             
 
             
             # check default checkboxes
             boxes = [(self.dlg.SRmin_checkBox, 129, '    <number>' + str(self.dlg.SR_min.value()) + '</number>\n'), 
                      (self.dlg.SRmax_checkBox, 158, '    <number>' + str(self.dlg.SR_max.value()) + '</number>\n'), 
-                     (self.dlg.OH_checkBox, 277, '    <double>' + str(self.dlg.obsHeight.value()) + '</double>\n'),
                      (self.dlg.Percent_checkBox, 206, '    <number>' + str(self.dlg.percentageOfPixels.value()) + '</number>\n'),
                      (self.dlg.Cores_checkBox, 251, '    <number>' + str(self.dlg.nCores.value()) + '</number>\n')]
             if any([i[0].isChecked() for i in boxes]):
@@ -249,16 +253,3 @@ class LocalDominance:
                 with open(os.path.join(self.plugin_dir, 'local_dominance_dialog_base.ui'), 'wb') as dialogFile:
                     for l in lines:
                         dialogFile.write(l)
-
-
-
-
-
-
-
-
-
-
-
-
-

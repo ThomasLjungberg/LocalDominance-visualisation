@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>410</width>
-    <height>503</height>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>460</y>
+     <y>410</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -93,7 +93,7 @@
     <rect>
      <x>30</x>
      <y>150</y>
-     <width>131</width>
+     <width>151</width>
      <height>16</height>
     </rect>
    </property>
@@ -163,8 +163,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>310</y>
-     <width>161</width>
+     <y>260</y>
+     <width>171</width>
      <height>16</height>
     </rect>
    </property>
@@ -176,8 +176,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>343</y>
-     <width>61</width>
+     <y>293</y>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
@@ -188,9 +188,9 @@
   <widget class="QSpinBox" name="percentageOfPixels">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>340</y>
-     <width>51</width>
+     <x>115</x>
+     <y>290</y>
+     <width>63</width>
      <height>22</height>
     </rect>
    </property>
@@ -211,8 +211,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>390</y>
-     <width>101</width>
+     <y>340</y>
+     <width>111</width>
      <height>16</height>
     </rect>
    </property>
@@ -224,8 +224,8 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>413</y>
-     <width>121</width>
+     <y>363</y>
+     <width>141</width>
      <height>16</height>
     </rect>
    </property>
@@ -236,8 +236,8 @@
   <widget class="QSpinBox" name="nCores">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>410</y>
+     <x>180</x>
+     <y>360</y>
      <width>42</width>
      <height>22</height>
     </rect>
@@ -252,38 +252,12 @@
     <number>3</number>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>263</y>
-     <width>151</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Observer height (map units):</string>
-   </property>
-  </widget>
-  <widget class="QDoubleSpinBox" name="obsHeight">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>260</y>
-     <width>62</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="value">
-    <double>1.7</double>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
      <x>313</x>
      <y>150</y>
-     <width>71</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
@@ -304,24 +278,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QCheckBox" name="OH_checkBox">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>263</y>
-     <width>16</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QCheckBox" name="Percent_checkBox">
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>343</y>
+     <y>293</y>
      <width>16</width>
      <height>17</height>
     </rect>
@@ -334,7 +295,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>410</y>
+     <y>363</y>
      <width>16</width>
      <height>17</height>
     </rect>
