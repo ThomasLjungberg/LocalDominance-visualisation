@@ -29,10 +29,6 @@ import resources
 from local_dominance_dialog import LocalDominanceDialog
 import os.path
 from subprocess import call
-import time
-
-startTime = time.time()
-
 
 class LocalDominance:
     """QGIS Plugin Implementation."""
@@ -143,9 +139,6 @@ class LocalDominance:
         :rtype: QAction
         """
 
-#        # Create the dialog (after translation) and keep reference
-#        self.dlg = LocalDominanceVisualisationDialog()
-
         icon = QIcon(icon_path)
         action = QAction(icon, text, parent)
         action.triggered.connect(callback)
@@ -199,7 +192,6 @@ class LocalDominance:
         self.dlg.outFile.setText(filename)
 
 
-
     def run(self):
         """Run method that performs all the real work"""
         self.dlg.inLayer.clear()
@@ -234,8 +226,6 @@ class LocalDominance:
             layerName = os.path.splitext(os.path.basename(outRaster))
             layer = QgsRasterLayer(outRaster, layerName[0])
             QgsMapLayerRegistry.instance().addMapLayer(layer)
-#			QgsProject.instance().addMapLayer(layer)
-            
 
             
             # check default checkboxes
