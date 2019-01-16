@@ -9,16 +9,16 @@
 """
 
 __author__ = 't.ljungberg74@gmail.com'
-__date__ = '2017-07-31'
-__copyright__ = 'Copyright 2017, Thomas Ljungberg'
+__date__ = '2019-01-08'
+__copyright__ = 'Copyright 2019, Thomas Ljungberg'
 
 import unittest
 
-from PyQt4.QtGui import QIcon
+from PyQt5.QtGui import QIcon
 
 
 
-class LocalDominanceVisualisationDialogTest(unittest.TestCase):
+class LocalDominanceDialogTest(unittest.TestCase):
     """Test rerources work."""
 
     def setUp(self):
@@ -31,12 +31,12 @@ class LocalDominanceVisualisationDialogTest(unittest.TestCase):
 
     def test_icon_png(self):
         """Test we can click OK."""
-        path = ':/plugins/LocalDominanceVisualisation/icon.png'
+        path = ':/plugins/LocalDominance/icon.png'
         icon = QIcon(path)
         self.assertFalse(icon.isNull())
 
 if __name__ == "__main__":
-    suite = unittest.makeSuite(LocalDominanceVisualisationResourcesTest)
+    suite = unittest.makeSuite(LocalDominanceResourcesTest)
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite)
 

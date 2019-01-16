@@ -8,14 +8,13 @@
 
 [general]
 name=Local Dominance Visualisation
-qgisMinimumVersion=2.0
-qgisMaximumVersion=2.98
+qgisMinimumVersion=3.0
 description=This plugin makes Local Dominance visualisations of raster images
-version=0.1
+version=1.0
 author=Thomas Ljungberg
 email=t.ljungberg74@gmail.com
 
-about=This plugin makes Local Dominance visualisations of raster images, which enhances e.g. very subtle features in digital elevation models.
+about=This plugin makes Local Dominance visualisations of raster images which enchances e.g. very subtle features in digital elevation models.
 
 tracker=https://github.com/ThomasLjungberg/LocalDominance-visualisation/issues
 repository=https://github.com/ThomasLjungberg/LocalDominance-visualisation
@@ -31,7 +30,7 @@ tags=DEM, Lidar, Visualisation, Archaeology, Morphology, Landscape
 
 homepage=https://github.com/ThomasLjungberg/LocalDominance-visualisation
 category=Raster
-icon=icon.svg
+icon=icon.png
 # experimental flag
 experimental=True
 

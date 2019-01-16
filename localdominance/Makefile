@@ -1,11 +1,11 @@
 #/***************************************************************************
-# LocalDominanceVisualisation
+# LocalDominance
 #
 # This plugin makes Local Dominance visualisations of raster images
 #							 -------------------
-#		begin				: 2017-07-31
+#		begin				: 2019-01-08
 #		git sha				: $Format:%H$
-#		copyright			: (C) 2017 by Thomas Ljungberg
+#		copyright			: (C) 2019 by Thomas Ljungberg
 #		email				: t.ljungberg74@gmail.com
 # ***************************************************************************/
 #
@@ -38,17 +38,17 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	local_dominance.py local_dominance_dialog.py local_dominance_parallel.py
+	local_dominance.py local_dominance_dialog.py
 
-PLUGINNAME = LocalDominanceVisualisation
+PLUGINNAME = local_dominance
 
 PY_FILES = \
 	__init__.py \
-	local_dominance.py local_dominance_dialog.py local_dominance_parallel.py
+	local_dominance.py local_dominance_dialog.py
 
 UI_FILES = local_dominance_dialog_base.ui
 
-EXTRAS = metadata.txt icon.png argFile.txt
+EXTRAS = metadata.txt icon.png
 
 EXTRA_DIRS =
 
@@ -74,7 +74,7 @@ default: compile
 compile: $(COMPILED_RESOURCE_FILES)
 
 %.py : %.qrc $(RESOURCES_SRC)
-	pyrcc4 -o $*.py  $<
+	pyrcc5 -o $*.py  $<
 
 %.qm : %.ts
 	$(LRELEASE) $<
@@ -113,7 +113,7 @@ deploy: compile doc transcompile
 	cp -vfr i18n $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
 	# Copy extra directories if any
-  # (temporarily removed)
+	(foreach EXTRA_DIR,(EXTRA_DIRS), cp -R (EXTRA_DIR) (HOME)/(QGISDIR)/python/plugins/(PLUGINNAME)/;)
 
 
 # The dclean target removes compiled python files from plugin directory

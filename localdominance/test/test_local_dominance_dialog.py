@@ -9,25 +9,25 @@
 """
 
 __author__ = 't.ljungberg74@gmail.com'
-__date__ = '2017-07-31'
-__copyright__ = 'Copyright 2017, Thomas Ljungberg'
+__date__ = '2019-01-08'
+__copyright__ = 'Copyright 2019, Thomas Ljungberg'
 
 import unittest
 
-from PyQt4.QtGui import QDialogButtonBox, QDialog
+from PyQt5.QtGui import QDialogButtonBox, QDialog
 
-from local_dominance_dialog import LocalDominanceVisualisationDialog
+from local_dominance_dialog import LocalDominanceDialog
 
 from utilities import get_qgis_app
 QGIS_APP = get_qgis_app()
 
 
-class LocalDominanceVisualisationDialogTest(unittest.TestCase):
+class LocalDominanceDialogTest(unittest.TestCase):
     """Test dialog works."""
 
     def setUp(self):
         """Runs before each test."""
-        self.dialog = LocalDominanceVisualisationDialog(None)
+        self.dialog = LocalDominanceDialog(None)
 
     def tearDown(self):
         """Runs after each test."""
@@ -49,7 +49,7 @@ class LocalDominanceVisualisationDialogTest(unittest.TestCase):
         self.assertEqual(result, QDialog.Rejected)
 
 if __name__ == "__main__":
-    suite = unittest.makeSuite(LocalDominanceVisualisationDialogTest)
+    suite = unittest.makeSuite(LocalDominanceDialogTest)
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite)
 

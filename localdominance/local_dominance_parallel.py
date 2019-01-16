@@ -1,3 +1,4 @@
+from builtins import range
 from gdal import AllRegister, Open, GetDriverByName, GDT_Float32
 from numpy import zeros, arange, sqrt, arctan, abs, round, sum, ceil
 from numpy.linalg import norm as nlnorm
@@ -5,11 +6,12 @@ from multiprocessing import Pool
 from bisect import bisect_left
 from os.path import abspath, join, dirname
 from sys import argv
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import QMainWindow, QApplication, QProgressBar
 
 basepath = dirname(abspath(__file__))
 with(open(join(basepath, 'argFile.txt'), 'r')) as f:
     args = f.readlines()
+
 
 # input and output files
 inFile = args[0].rstrip()
@@ -58,7 +60,7 @@ def equal_dist_els(my_list, fraction):
     :return: Elements of the list with the best match
     """
     length = len(my_list)
-    list_indexes = range(length)
+    list_indexes = list(range(length))
     nbr_bins = int(round(length * fraction))
     step = length / float(nbr_bins)  # the size of a single bin
     bins = [step * i for i in range(nbr_bins)]  # list of bin ends
@@ -90,7 +92,7 @@ def ChoosePixels():
 
 
 # progress bar
-class ProgBar(QtGui.QMainWindow):
+class ProgBar(QMainWindow):
 
     def __init__(self, pixelList):
         super(ProgBar, self).__init__()
@@ -100,9 +102,11 @@ class ProgBar(QtGui.QMainWindow):
         self.home()
 
     def home(self):
-        self.progress = QtGui.QProgressBar(self)
+        self.progress = QProgressBar(self)
         self.progress.setGeometry(50, 40, 400, 30)
+        self.center()
         self.show()
+        
         
     def LocalD(self):
         tmp = zeros((nrow - 2 * frameY, ncol - 2 * frameX), dtype=dem.dtype)
@@ -110,13 +114,24 @@ class ProgBar(QtGui.QMainWindow):
             vDist = dem[frameY:-frameY, frameX:-frameX] - dem[elem[0]:elem[0]+ldNRows, elem[1]:elem[1]+ldNCols]
             tmp += arctan(vDist/elem[2])
             self.progress.setValue((i*100)/len(self.pixelList))
+            QApplication.processEvents()
         return tmp
-
+    
+    def center(self):
+        """Center progress bar on the current screen."""
+        self.showNormal()
+        window_geometry = self.frameGeometry()
+        mouse_pos = QApplication.desktop().cursor().pos()
+        screen_number = QApplication.desktop().screenNumber(mouse_pos)
+        center = QApplication.desktop().screenGeometry(screen_number).center()
+        window_geometry.moveCenter(center)
+        return bool(not self.move(window_geometry.topLeft()))
+        
 
 # run the visualisation. First process is sent to progress bar
 def run_LocalD(pixelList):
     if pixelList[1] == 0:
-        app = QtGui.QApplication(argv)
+        app = QApplication(argv)
         tmp = ProgBar(pixelList).LocalD()
         app.exit()
     else:
@@ -124,6 +139,7 @@ def run_LocalD(pixelList):
         for i in pixelList[0]:
             vDist = dem[frameY:-frameY, frameX:-frameX] - dem[i[0]:i[0]+ldNRows, i[1]:i[1]+ldNCols]
             tmp += arctan(vDist/i[2])
+            
     return tmp
 
 
@@ -141,6 +157,7 @@ def WriteOutFile(ld):
     outBand.WriteArray(ld)
     outData = None
 
+
 # parallel processing
 def main():
     pixelList = ChoosePixels()
@@ -153,6 +170,8 @@ def main():
     pool.join()
     ld = sum(results, axis=0)
     WriteOutFile(ld)
+
+    
 
 
 if __name__ == '__main__':
