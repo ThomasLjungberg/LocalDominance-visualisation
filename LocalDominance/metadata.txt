@@ -15,7 +15,7 @@ version=0.1
 author=Thomas Ljungberg
 email=t.ljungberg74@gmail.com
 
-about=This plugin makes Local Dominance visualisations of raster images, which enhances e.g. very subtle features in digital elevation models.
+about=This plugin makes Local Dominance visualisations of raster images, which enhances e.g. very subtle features in digital elevation models. It depends on the following modules: PyQt4, os, subprocess, gdal, numpy, multiprocessing, bisect, sys.
 
 tracker=https://github.com/ThomasLjungberg/LocalDominance-visualisation/issues
 repository=https://github.com/ThomasLjungberg/LocalDominance-visualisation
