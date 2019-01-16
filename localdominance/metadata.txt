@@ -23,7 +23,9 @@ repository=https://github.com/ThomasLjungberg/LocalDominance-visualisation
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog=
+  0.1 : Initial working version
+  1.0 : Migrated to QGIS3
 
 # Tags are comma separated with spaces allowed
 tags=DEM, Lidar, Visualisation, Archaeology, Morphology, Landscape
