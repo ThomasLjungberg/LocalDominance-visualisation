@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/plugins/local_dominance" >
-        <file>icon.png</file>
-    </qresource>
-</RCC>
