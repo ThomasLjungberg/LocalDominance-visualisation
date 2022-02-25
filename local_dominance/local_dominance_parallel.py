@@ -1,5 +1,5 @@
 from builtins import range
-from gdal import AllRegister, Open, GetDriverByName, GDT_Float32
+from osgeo.gdal import AllRegister, Open, GetDriverByName, GDT_Float32
 from numpy import zeros, arange, sqrt, arctan, abs, round, sum, ceil
 from numpy.linalg import norm as nlnorm
 from multiprocessing import Pool
